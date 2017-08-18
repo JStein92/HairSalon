@@ -151,6 +151,11 @@ namespace HairSalon.Controllers
 
         return View("StylistDetails",model);
       }
+      [HttpGet("/ClientsAll")]
+      public  ActionResult ClientsAll()
+      {
+        return View(Client.GetAll());
+      }
 
 
     }

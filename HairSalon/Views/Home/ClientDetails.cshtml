@@ -6,7 +6,7 @@
     <h1>Details for @Model["client"].GetName()</h1>
   </div>
 
-  <h1 id="clientHeader">Current Stylist: @Model["stylist"].GetName()</h1>
+  <h1 id="clientHeader">Current Stylist: <a href='/StylistDetails/@Model["stylist"].GetId()'>@Model["stylist"].GetName()</a></h1>
 
 <form action='/StylistDetails/@Model["stylist"].GetId()/@Model["client"].GetId()/Edited' method="post">
   <div class="form-group">
@@ -27,7 +27,9 @@
 
    <button type="submit" name="button" class="btn btn-success">Submit changes</button>
  </form>
-  <a href='/StylistDetails/@Model["stylist"].GetId()'><button type="button" class="btn btn-warning" name="button">Back</button></a>
+
+  <a href='/ClientsAll'><button type="button" class="btn btn-info" name="button">View All Clients</button></a>
+
 
   </div>
 

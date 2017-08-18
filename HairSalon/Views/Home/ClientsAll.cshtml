@@ -1,0 +1,42 @@
+@{
+  Layout="_Layout";
+}
+<div class="container">
+
+  @if(Model.Count >0)
+  {
+    <div class="page-header">
+    <h1>All Clients</h1>
+    </div>
+  }
+  else
+  {
+    <div class="page-header">
+    <h1>No Clients Avaiable - Add a Client to a Stylist first!</h1>
+    </div>
+  }
+
+
+
+  @foreach(var client in Model)
+  {
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <a href='/StylistDetails/@client.FindStylist().GetId()/@client.GetId()'>
+        <h3 class="panel-title">@client.GetName()</h3>
+        </a>
+      </div>
+        <div class="panel-body ">
+        <h3>Stylist: @client.FindStylist().GetName()</h3>
+        <h3>Phone: @client.GetPhone()</h3>
+        </div>
+
+        <form action='/StylistDetails/@client.FindStylist().GetId()/@client.GetId()/Remove' method="post">
+          <button type="submit" class="btn btn-danger fire">Remove</button>
+        </form>
+
+    </div>
+  }
+    <a href="/"><button type="button" class="btn btn-warning" name="button">Back</button></a>
+</div>

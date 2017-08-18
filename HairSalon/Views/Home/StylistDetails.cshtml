@@ -2,31 +2,45 @@
   Layout="_Layout";
 }
 <div class="container">
-  <div class="page-header">
-  <h1>Details for @Model["stylist"].GetName()</h1>
-  </div>
 
-  <h2 id="clientHeader">Clients:</h2>
-  @foreach(var client in Model["clients"])
+
+  @if (@Model["stylist"].GetName().Length == 0)
   {
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-      <a href='/StylistDetails/@Model["stylist"].GetId()/@client.GetId()'>
-        <h3 class="panel-title">@client.GetName()</h3>
-        </a>
-      </div>
-        <div class="panel-body ">
-        <h3>Phone: @client.GetPhone()</h3>
-        </div>
-
-        <form action='/StylistDetails/@Model["stylist"].GetId()/@client.GetId()/Remove' method="post">
-          <button type="submit" class="btn btn-danger fire">Remove</button>
-        </form>
-
+    <div class="page-header">
+    <h1>No Stylist Found!</h1>
     </div>
   }
-    <a href='/@Model["stylist"].GetId()/ClientForm'><button type="button" class="btn btn-success">Add new Client for @Model["stylist"].GetName()</button></a>
+  else
+  {
+    <div class="page-header">
+    <h1>Details for @Model["stylist"].GetName()</h1>
+    </div>
+
+    <h2 id="clientHeader">Clients:</h2>
+    @foreach(var client in Model["clients"])
+    {
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        <a href='/StylistDetails/@Model["stylist"].GetId()/@client.GetId()'>
+          <h3 class="panel-title">@client.GetName()</h3>
+          </a>
+        </div>
+          <div class="panel-body ">
+          <h3>Phone: @client.GetPhone()</h3>
+          </div>
+
+          <form action='/StylistDetails/@Model["stylist"].GetId()/@client.GetId()/Remove' method="post">
+            <button type="submit" class="btn btn-danger fire">Remove</button>
+          </form>
+
+      </div>
+    }
+      <a href='/@Model["stylist"].GetId()/ClientForm'><button type="button" class="btn btn-success">Add new Client for @Model["stylist"].GetName()</button></a>
+  }
+
+
+
 
     <a href="/"><button type="button" class="btn btn-warning" name="button">Back</button></a>
 </div>
