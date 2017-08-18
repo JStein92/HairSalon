@@ -8,22 +8,25 @@
   <h1>Stylists employed:</h1>
 </div>
 
+<form class="form-group" action="/StylistSearch" method="post">
+  <label for="stylist-search">Search for a stylist by name</label>
+  <input class="form-control "type="text" name="stylist-search" value="ex: Jeremy">
+</form>
 
   @foreach(var stylist in Model)
   {
-
     <div class="panel panel-default">
       <div class="panel-heading">
-        <a href="/StylistDetails/@stylist.GetId()">
-        <h3 class="panel-title">@stylist.GetName()</h3>
-          </a>
-      </div>
+        <h3 class="panel-title"> <a href="/StylistDetails/@stylist.GetId()">@stylist.GetName()</a></h3>
+       </div>
         <div class="panel-body">
         <a href="/StylistDetails/@stylist.GetId()">
           <img class="stylistImage" src="../img/@stylist.GetImage()" alt="@stylist.GetImage()">
           </a>
+          <form action="/@stylist.GetId()/remove" method="post">
+              <button type="submit" class="btn btn-danger fire">Remove</button>
+            </form>
         </div>
-
     </div>
   }
   <a href="/StylistForm"><button type="button" class="btn btn-success">Add new Stylist</button></a>

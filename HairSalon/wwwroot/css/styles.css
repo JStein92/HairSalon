@@ -37,3 +37,11 @@ label{
   padding-bottom: 10px;
   border-bottom: 3px solid black;
 }
+.btn{
+  font-size: 2em;
+  margin: 30px;
+}
+.fire{
+  font-size: 1em;
+margin: 5px;
+}

@@ -115,6 +115,43 @@ namespace HairSalon.Controllers
         return View("StylistDetails",model);
       }
 
+      [HttpPost("/{id}/remove")]
+      public ActionResult IndexRemovePost(int id)
+      {
+        Stylist stylistToDelete = Stylist.Find(id);
+        stylistToDelete.Delete();
+        return View("Index", Stylist.GetAll());
+      }
+
+      [HttpPost("/StylistDetails/{stylistId}/{clientId}/Remove")]
+      public ActionResult StylistDetailsRemoveClient(int stylistId, int clientId)
+      {
+        Stylist selectedStylist = Stylist.Find(stylistId);
+
+        Client newClient = Client.Find(clientId);
+        newClient.Delete();
+
+        Dictionary<string, object> model= new Dictionary<string, object>{};
+
+        model.Add("stylist", selectedStylist);
+        model.Add("clients", selectedStylist.GetAllClients());
+
+        return View("StylistDetails",model);
+      }
+      [HttpPost("/StylistSearch")]
+      public ActionResult StylistSearch()
+      {
+        string searchString = Request.Form["stylist-search"];
+        Stylist foundStylist = Stylist.Search(searchString);
+
+        Dictionary<string, object> model= new Dictionary<string, object>{};
+
+        model.Add("stylist", foundStylist);
+        model.Add("clients", foundStylist.GetAllClients());
+
+        return View("StylistDetails",model);
+      }
+
 
     }
 }

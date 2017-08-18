@@ -19,6 +19,11 @@
         <div class="panel-body ">
         <h3>Phone: @client.GetPhone()</h3>
         </div>
+
+        <form action='/StylistDetails/@Model["stylist"].GetId()/@client.GetId()/Remove' method="post">
+          <button type="submit" class="btn btn-danger fire">Remove</button>
+        </form>
+
     </div>
   }
     <a href='/@Model["stylist"].GetId()/ClientForm'><button type="button" class="btn btn-success">Add new Client for @Model["stylist"].GetName()</button></a>

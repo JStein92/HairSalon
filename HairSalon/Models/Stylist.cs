@@ -169,14 +169,15 @@ namespace HairSalon.Models
 
       cmd.ExecuteNonQuery();
 
-      // cmd.CommandText = @"DELETE FROM clients WHERE stylist_id = @thisId;";
-      //
-      // MySqlParameter searchId2 = new MySqlParameter();
-      // searchId2.ParameterName = "@thisId";
-      // searchId2.Value = _id;
-      // cmd.Parameters.Add(searchId2);
-      //
-      // cmd.ExecuteNonQuery();
+      cmd.CommandText = @"DELETE FROM clients WHERE stylist_id = @thisId;";
+
+      MySqlParameter searchId2 = new MySqlParameter();
+      searchId2.ParameterName = "@thisId";
+      searchId2.Value = _id;
+      cmd.Parameters.Add(searchId2);
+
+      cmd.ExecuteNonQuery();
+
       conn.Close();
     }
 
@@ -249,8 +250,10 @@ namespace HairSalon.Models
       var cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"DELETE FROM stylists;";
       cmd.ExecuteNonQuery();
-      conn.Close();
 
+      cmd.CommandText = @"DELETE FROM clients;";
+      cmd.ExecuteNonQuery();
+      conn.Close();
     }
 
   }
