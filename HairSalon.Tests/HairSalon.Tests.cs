@@ -76,7 +76,22 @@ namespace HairSalon.Tests
       List<Stylist> actual = Stylist.GetAll();
 
       CollectionAssert.AreEqual(expected, actual);
-  }
+    }
+
+    [TestMethod]
+    public void Search_SearchStylistByNameInDatabase_Stylist()
+    {
+      Stylist stylist1 = new Stylist("Jeffery", "www.image.com/image.jpg");
+      Stylist stylist2 = new Stylist("Amanda", "www.image.com/image2.jpg");
+      stylist1.Save();
+      stylist2.Save();
+
+      Stylist expected = stylist1;
+
+      Stylist actual = Stylist.Search("Jeffery");
+
+      Assert.AreEqual(expected, actual);
+    }
 
     public void Dispose()
     {

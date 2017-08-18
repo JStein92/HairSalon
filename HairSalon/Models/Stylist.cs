@@ -106,10 +106,10 @@ namespace HairSalon.Models
      conn.Open();
 
      var cmd = conn.CreateCommand() as MySqlCommand;
-     cmd.CommandText = @"SELECT * FROM stylists WHERE id = (@cuisineId);";
+     cmd.CommandText = @"SELECT * FROM stylists WHERE id = (@thisId);";
 
      MySqlParameter searchId = new MySqlParameter();
-     searchId.ParameterName = "@cuisineId";
+     searchId.ParameterName = "@thisId";
      searchId.Value = id;
      cmd.Parameters.Add(searchId);
 
@@ -178,6 +178,37 @@ namespace HairSalon.Models
       //
       // cmd.ExecuteNonQuery();
       conn.Close();
+    }
+
+    public static Stylist Search(string searchName)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM stylists WHERE name = (@searchName);";
+
+      MySqlParameter searchNameParameter = new MySqlParameter();
+      searchNameParameter.ParameterName = "@searchName";
+      searchNameParameter.Value = searchName;
+      cmd.Parameters.Add(searchNameParameter);
+
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      int stylistId = 0;
+      string stylistName = "";
+      string stylistImage = "";
+
+      while(rdr.Read())
+      {
+        stylistId = rdr.GetInt32(0);
+        stylistName = rdr.GetString(1);
+        stylistImage = rdr.GetString(2);
+      }
+
+      Stylist foundStylist = new Stylist(stylistName, stylistImage, stylistId);
+      conn.Close();
+      return foundStylist;
     }
 
 
