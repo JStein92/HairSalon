@@ -1,1 +1,25 @@
-<h1>This is a test</h1>
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+  <h1>Stylists employed:</h1>
+  @foreach(var stylist in Model)
+  {
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a href="/StylistDetails/@stylist.GetId()">
+        <h3 class="panel-title">@stylist.GetName()</h3>
+          </a>
+      </div>
+        <div class="panel-body ">
+          <img class="stylistImage" src="../img/@stylist.GetImage()" alt="@stylist.GetImage()">
+        </div>
+
+    </div>
+  }
+  <a href="/StylistForm"><button type="button" class="btn btn-success">Add new Stylist</button></a>
+
+  <a href="/RemoveAllStylists"><button type="button" class="btn btn-danger">Remove All Stylists</button></a>
+</div>

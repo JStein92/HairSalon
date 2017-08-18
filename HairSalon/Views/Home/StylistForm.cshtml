@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  <h1>Add a new Stylist</h1>
+
+  <form class="form-group" action="/" method="post">
+    <label for="name">Name of Stylist</label>
+    <input type="text" name="name" class="form-control">
+
+    <label for="image">Image of Stylist</label>
+    <div class="well">
+      <input type="file" name="image" >
+    </div>
+
+    <button type="submit" class="btn btn-success" name="button">Submit new stylist</button>
+  </form>
+  <a href="/"><button type="button" class="btn btn-warning" name="button">Back</button></a>
+</div>

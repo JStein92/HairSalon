@@ -1,0 +1,22 @@
+@{
+  Layout="_Layout";
+}
+<div class="container">
+  <h1>@Model["stylist"].GetName()</h1>
+
+  @foreach(var client in Model["clients"])
+  {
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">@client.GetName()</h3>
+      </div>
+        <div class="panel-body ">
+        <h3>Phone: @client.GetPhone()</h3>
+        </div>
+    </div>
+  }
+    <a href='/@Model["stylist"].GetId()/ClientForm'><button type="button" class="btn btn-success">Add new Client for @Model["stylist"].GetName()</button></a>
+    <br>
+    <a href="/"><button type="button" class="btn-warning" name="button">Back</button></a>
+</div>
