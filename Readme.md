@@ -1,4 +1,4 @@
-# Word Counter #
+# Hair Salon #
 ## By Jonathan Stein ##
 ## _A hair salon's internal website that allows the user to manage stylists and their clients._ ##
 ___
