@@ -190,6 +190,50 @@ namespace HairSalon.Models
       conn.Close();
       _stylistId = newStylistId;
     }
+    public void UpdatePhone(string newPhone)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE clients SET phone = @newPhone WHERE id = @thisId;";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@thisId";
+      searchId.Value = _id;
+      cmd.Parameters.Add(searchId);
+
+      MySqlParameter clientPhone = new MySqlParameter();
+      clientPhone.ParameterName = "@newPhone";
+      clientPhone.Value = newPhone;
+      cmd.Parameters.Add(clientPhone);
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      _phone = newPhone;
+    }
+    public void UpdateName(string newName)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE clients SET name = @newName WHERE id = @thisId;";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@thisId";
+      searchId.Value = _id;
+      cmd.Parameters.Add(searchId);
+
+      MySqlParameter clientName = new MySqlParameter();
+      clientName.ParameterName = "@newName";
+      clientName.Value = newName;
+      cmd.Parameters.Add(clientName);
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      _name = newName;
+    }
 
     public void Delete()
     {
@@ -206,14 +250,24 @@ namespace HairSalon.Models
 
       cmd.ExecuteNonQuery();
 
-      // cmd.CommandText = @"DELETE FROM clients WHERE client_id = @thisId;";
-      //
-      // MySqlParameter searchId2 = new MySqlParameter();
-      // searchId2.ParameterName = "@thisId";
-      // searchId2.Value = _id;
-      // cmd.Parameters.Add(searchId2);
-      //
-      // cmd.ExecuteNonQuery();
+      conn.Close();
+    }
+
+    public static void DeleteById(int id)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM clients WHERE id = @thisId;";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@thisId";
+      searchId.Value = id;
+      cmd.Parameters.Add(searchId);
+
+      cmd.ExecuteNonQuery();
+
       conn.Close();
     }
 

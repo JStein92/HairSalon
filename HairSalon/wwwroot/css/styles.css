@@ -1,11 +1,39 @@
-.stylistImage{
-  width: 300px;
-}
-
 body{
   text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  background-color:#fefcff;
 }
-
 label{
   margin-top: 20px;
+}
+.jumbotron{
+ padding-top: 100px;
+ padding-bottom: 100px;
+  background-image: url("../img/headerimg.png");
+  background-size: cover;
+}
+.jumbotron h1{
+  font-size: 8em;
+   text-shadow: 2px 2px white;
+}
+.page-header{
+  padding-top: 10px;
+  padding-bottom: 15px;
+  background-color: #eaf9ff;
+}
+.panel-heading h3{
+  font-size: 2em;
+}
+.panel-body{
+
+  background-color: #f4fffd;
+  padding: 0px;
+}
+.stylistImage{
+  width: 400px;
+      border-radius: 25px;
+}
+#clientHeader{
+  padding-bottom: 10px;
+  border-bottom: 3px solid black;
 }

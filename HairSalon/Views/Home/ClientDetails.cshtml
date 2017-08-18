@@ -1,0 +1,33 @@
+@{
+  Layout="_Layout";
+}
+<div class="container">
+  <div class="page-header">
+    <h1>Details for @Model["client"].GetName()</h1>
+  </div>
+
+  <h1>Current Stylist: @Model["stylist"].GetName()</h1>
+
+<form action='/StylistDetails/@Model["stylist"].GetId()/@Model["client"].GetId()/Edited' method="post">
+  <div class="form-group">
+  <label for="stylist">Change stylist</label>
+   <select class="form-control" id="stylist" name="stylist">
+     @foreach(var stylist in Model["allStylists"])
+     {
+       <option>@stylist.GetName()</option>
+     }
+   </select>
+
+   <label for="name">Edit name</label>
+   <input type="text" name="name"class="form-control" value=" @Model["client"].GetName()" >
+
+   <label for="phone">Edit Phone</label>
+   <input type="text" name="phone"class="form-control" value=" @Model["client"].GetPhone()" >
+
+   <button type="submit" name="button" class="btn btn-success">Submit changes</button>
+ </form>
+  <a href='/StylistDetails/@Model["stylist"].GetId()'><button type="button" class="btn btn-warning" name="button">Back</button></a>
+
+  </div>
+
+</div>

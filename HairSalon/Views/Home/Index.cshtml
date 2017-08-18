@@ -3,7 +3,12 @@
 }
 
 <div class="container">
+
+<div class="page-header">
   <h1>Stylists employed:</h1>
+</div>
+
+
   @foreach(var stylist in Model)
   {
 
@@ -13,8 +18,10 @@
         <h3 class="panel-title">@stylist.GetName()</h3>
           </a>
       </div>
-        <div class="panel-body ">
+        <div class="panel-body">
+        <a href="/StylistDetails/@stylist.GetId()">
           <img class="stylistImage" src="../img/@stylist.GetImage()" alt="@stylist.GetImage()">
+          </a>
         </div>
 
     </div>
