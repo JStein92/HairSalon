@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace ExampleProject
+namespace HairSalon
 {
   public class Program
   {

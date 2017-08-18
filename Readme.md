@@ -1,31 +1,31 @@
 ## Synopsis
 
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+A hair salon's internal website that allows the user to manage stylists and their clients.
 
-## Code Example
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+### User Story
 
-## Motivation
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+- As a salon employee, I need to be able to see a list of all our stylists.
+- As an employee, I need to be able to select a stylist, see their details, and see a list of all clients that belong to that stylist.
+- As an employee, I need to add new stylists to our system when they are hired.
+- As an employee, I need to be able to add new clients to a specific stylist.
+- As an employee, I need to be able to update a client's name.
+- As an employee, I need to be able to delete a client if they no longer visit our salon.
 
-## Installation
 
-Provide code examples and explanations of how to get the project.
+### Technical Specs - each spec relates to a test method
 
-## API Reference
-
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
-
-## Tests
-
-Describe and show how to run the tests with code examples.
-
-## Contributors
-
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
-
-## License
-
-A short snippet describing the license (MIT, Apache, etc.)
+| App Behavior | Input | Actual |
+|----|----|----|  
+|  Get a list of all sylists from DB | List of all sylists | List of all sylists from DB |
+|  Save stylist to database  |  TestStylist  |  TestStylist  |
+|  Find stylist by Id | Stylist Id | Stylist Id from DB |
+| Save client to database | TestClient | TestClient |
+|  Find client by Id | ClientId | ClientId from DB |
+|  Displays list of all clients for stylist | TestStylist | All clients in stylist category from DB |
+| Update specific stylist name | StylistNewName | StylistList with updated stylist name |
+| Delete specific stylist name | StylistToDelete  | StylistList without StylistToDelete  |
+| Update specific client name | TestClientUpdated | TestClientList with updated name |
+| Delete specific client name | TestClientDeleted  | ClientList without TestClientDeleted|
+| Search by Stylist name | TestStylistName | TestStylist |

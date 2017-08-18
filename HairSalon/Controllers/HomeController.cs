@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
-using ExampleProject.Models;
+using HairSalon.Models;
 using System.Collections.Generic;
 using System;
 using System.Globalization;
 
-namespace ExampleProject.Controllers
+namespace HairSalon.Controllers
 {
     public class HomeController : Controller
     {
-        
+
     }
 }
