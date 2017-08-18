@@ -33,6 +33,18 @@ namespace HairSalon.Tests
       CollectionAssert.AreEqual(expectedStylistList, actualStylistList);
     }
 
+    [TestMethod]
+    public void Find_FindsStylistByIdInDatabase_Stylist()
+    {
+      Stylist testStylist = new Stylist("TestStylist", "www.images.com/stylistpicture.jpg");
+      testStylist.Save();
+
+      Stylist expected = testStylist;
+      Stylist actual = Stylist.Find(testStylist.GetId());
+
+      Assert.AreEqual(expected, actual);
+    }
+
     public void Dispose()
     {
       Stylist.DeleteAll();
