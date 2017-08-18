@@ -4,12 +4,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HairSalon
+
 {
+  public static class DBConfiguration
+  {
+    public static string ConnectionString = "server=localhost;user id=root;password=root;port=	3306;database=hair_salon;";
+  }
   public class Startup
   {
     public Startup(IHostingEnvironment env)
     {
-      var builder = new ConfigurationBuilder() .SetBasePath(env.ContentRootPath) .AddEnvironmentVariables();
+      var builder = new ConfigurationBuilder()
+        .SetBasePath(env.ContentRootPath)
+        .AddEnvironmentVariables();
       Configuration = builder.Build();
     }
 
@@ -27,9 +34,9 @@ namespace HairSalon
       app.UseMvc(routes =>
       {
         routes.MapRoute(
-        name: "default",
-        template: "{controller=Home}/{action=Index}/{id?}");
-        });
+          name: "default",
+          template: "{controller=Home}/{action=Index}/{id?}");
+      });
     }
   }
 }
