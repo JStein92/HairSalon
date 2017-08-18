@@ -30,6 +30,24 @@ namespace HairSalon.Models
       return _image;
     }
 
+    public override bool Equals(System.Object otherObject)
+    {
+      if (!(otherObject is Stylist))
+      {
+        return false;
+      }
+      else
+      {
+        Stylist newStylist = (Stylist) otherObject;
+        return this.GetId().Equals(newStylist.GetId());
+      }
+    }
+
+    public override int GetHashCode()
+    {
+        return this.GetId().GetHashCode();
+    }
+
 
     public static List<Stylist> GetAll()
     {
@@ -52,5 +70,47 @@ namespace HairSalon.Models
       conn.Close();
       return stylistList;
     }
+
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO stylists (id,name,image) VALUES (@thisId, @name, @image);";
+
+      MySqlParameter id = new MySqlParameter();
+      id.ParameterName = "@thisId";
+      id.Value = _id;
+      cmd.Parameters.Add(id);
+
+      MySqlParameter name = new MySqlParameter();
+      name.ParameterName = "@name";
+      name.Value = _name;
+      cmd.Parameters.Add(name);
+
+      MySqlParameter image = new MySqlParameter();
+      image.ParameterName = "@image";
+      image.Value = _image;
+      cmd.Parameters.Add(image);
+
+      cmd.ExecuteNonQuery();
+      _id = (int) cmd.LastInsertedId;
+      conn.Close();
+
+    }
+
+    public static void DeleteAll()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM stylists;";
+      cmd.ExecuteNonQuery();
+      conn.Close();
+
+    }
+
   }
 }
