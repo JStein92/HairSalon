@@ -1,6 +1,9 @@
-## Synopsis
+# Word Counter #
+## By Jonathan Stein ##
+## _A hair salon's internal website that allows the user to manage stylists and their clients._ ##
+___
 
-A hair salon's internal website that allows the user to manage stylists and their clients.
+
 
 
 ### User Story
@@ -29,3 +32,42 @@ A hair salon's internal website that allows the user to manage stylists and thei
 | Update specific client name | TestClientUpdated | TestClientList with updated name |
 | Delete specific client name | TestClientDeleted  | ClientList without TestClientDeleted|
 | Search by Stylist name | TestStylistName | TestStylist |
+
+### _Content_ ###
+
+Index.cshtml:
+
+ - Splash page - view stylists, add a new stylists, view all clients, and remove stylists
+
+ClientDetails.cshtml
+- View client details
+
+ClientForm.cshtml
+- Submit a new client
+
+ClientsAll.cshtml
+- View all clients
+
+StylistDetails.cshtml
+- View stylist details, including their clients
+
+StylistForm.cshtml
+- Submit a new stylist
+
+Other:
+- Client.cs
+  - Model for client class
+- HomeController.cs
+  - Getting and Posting routes
+- Layout.cshtml
+  - CSS layout and script importing
+- Styles.css
+  - CSS management
+
+### _How to use_ ###
+
+1. Download project from GitHub: https://github.com/JStein92/HairSalon
+2. Run HTML in preferred browser
+3. Follow instructions on page
+  - Create a new stylist and use an image from WWWRoot folder (supplied)
+  - Create clients for the stylists
