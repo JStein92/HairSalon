@@ -45,6 +45,22 @@ namespace HairSalon.Tests
       Assert.AreEqual(expected, actual);
     }
 
+    [TestMethod]
+    public void Update_UpdatesStylistNameInDatabase_Stylist()
+    {
+      string name = "TestStylist";
+      Stylist testStylist = new Stylist(name, "image.jpg");
+      testStylist.Save();
+      string newName = "TestStylistNewName";
+
+      testStylist.Update(newName);
+
+      string expected = newName;
+      string actual = testStylist.GetName();
+
+      Assert.AreEqual(expected, actual);
+    }
+
     public void Dispose()
     {
       Stylist.DeleteAll();
