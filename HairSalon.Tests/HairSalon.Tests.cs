@@ -49,7 +49,7 @@ namespace HairSalon.Tests
     public void Update_UpdatesStylistNameInDatabase_Stylist()
     {
       string name = "TestStylist";
-      Stylist testStylist = new Stylist(name, "image.jpg");
+      Stylist testStylist = new Stylist(name, "www.image.com/image.jpg");
       testStylist.Save();
       string newName = "TestStylistNewName";
 
@@ -60,6 +60,23 @@ namespace HairSalon.Tests
 
       Assert.AreEqual(expected, actual);
     }
+
+
+    [TestMethod]
+    public void Delete_DeleteStylistByIdInDatabase_StylistList()
+    {
+      Stylist stylist1 = new Stylist("TestStylistName", "www.image.com/image.jpg");
+      Stylist stylist2 = new Stylist("TestStylistName2", "www.image.com/image2.jpg");
+      stylist1.Save();
+      stylist2.Save();
+
+      List<Stylist> expected = new List<Stylist> {stylist2};
+      stylist1.Delete();
+
+      List<Stylist> actual = Stylist.GetAll();
+
+      CollectionAssert.AreEqual(expected, actual);
+  }
 
     public void Dispose()
     {

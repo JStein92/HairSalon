@@ -25,7 +25,7 @@ A hair salon's internal website that allows the user to manage stylists and thei
 |  Find client by Id | ClientId | ClientId from DB |
 |  Displays list of all clients for stylist | TestStylist | All clients in stylist category from DB |
 | Update specific stylist name | StylistNewName | StylistList with updated stylist name |
-| Delete specific stylist name | StylistToDelete  | StylistList without StylistToDelete  |
+| Delete specific stylist | StylistToDelete  | StylistList without StylistToDelete  |
 | Update specific client name | TestClientUpdated | TestClientList with updated name |
 | Delete specific client name | TestClientDeleted  | ClientList without TestClientDeleted|
 | Search by Stylist name | TestStylistName | TestStylist |
